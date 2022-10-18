@@ -10,7 +10,7 @@ import XCTest
 
 final class SpaceXAPITests: XCTestCase {
     
-    var networkService = SXNetworkingService()
+    var launchRequestService = SXLaunchRequestService()
     var expectation = XCTestExpectation(description: "Testing SXNetworkingService")
 
     override func setUpWithError() throws {
@@ -29,15 +29,34 @@ final class SpaceXAPITests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
     
+    func makeExpectationDescription(_ description: String) {
+        expectation = XCTestExpectation(description: description)
+    }
+    
     func testNetworkingGetData() async {
-        expectation = XCTestExpectation(description: "Test getData()")
-        self.networkService.getData { rocketJSON, error in
+        self.makeExpectationDescription("Test getData()")
+        self.launchRequestService.getLaunchData { rocketJSON, error in
             guard let json = rocketJSON else { XCTFail("JSON should be present"); return }
             print("JSON: \(json)")
             XCTAssertTrue(error==nil && rocketJSON != nil, "JSON should be present and there should be no Error.")
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testLaunchProviderGetLaunches() async {
+        self.makeExpectationDescription("Test getLaunchData()")
+        
+        let launchService = SXLaunchProviderService()
+        launchService.getLaunchData { launches, error in
+            if let err = error {
+                XCTFail(err)
+                return
+            }
+            XCTAssertTrue(launches.count > 0, "Should return more than '0' launches.")
+            self.expectation.fulfill()
+        }
+        wait(for: [self.expectation], timeout: 10.0)
     }
 
     func testPerformanceExample() throws {
