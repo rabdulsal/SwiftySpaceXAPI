@@ -58,6 +58,24 @@ final class SpaceXAPITests: XCTestCase {
         }
         wait(for: [self.expectation], timeout: 10.0)
     }
+    
+    func testImageProviderService() async {
+        self.makeExpectationDescription("Test ImageProvider")
+        let service = SXImageProviderService(resourceURL: URL(string: "https://images2.imgbox.com/4f/e3/I0lkuJ2e_o.png")!)
+        service.getMissionPatchImg { image, error in
+            if let err = error {
+                XCTFail("ERROR: \(err)")
+                return
+            }
+            XCTAssertTrue(image.isKind(of: UIImage.self), "Object returned should be of Type UIImage.")
+            self.expectation.fulfill()
+        }
+        self.setWaitTime()
+    }
+    
+    func setWaitTime() {
+        wait(for: [self.expectation], timeout: 10.0)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
