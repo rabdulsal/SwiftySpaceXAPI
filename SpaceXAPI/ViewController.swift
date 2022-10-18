@@ -7,10 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    
-    @IBOutlet weak var launchTableView: UITableView!
+class SXLaunchesViewController: UITableViewController {
     
     var launchProvider = SXLaunchProviderService()
     var launches = [SXLaunchData]()
@@ -18,21 +15,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.launchTableView.delegate = self
-        self.launchTableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         self.getLaunchData()
     }
-
-
-}
-
-extension ViewController : UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return launches.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SXLaunchSummaryCell.Identifier, for: indexPath) as? SXLaunchSummaryCell else { return UITableViewCell() }
         let launch = self.launches[indexPath.row]
@@ -43,18 +35,14 @@ extension ViewController : UITableViewDataSource {
     }
 }
 
-extension ViewController : UITableViewDelegate {
-    
-}
-
-private extension ViewController {
+private extension SXLaunchesViewController {
     
     
     func getLaunchData() {
         self.launchProvider.getLaunchData { [weak self] launches, error in
             self?.launches = launches
             DispatchQueue.main.async {
-                self?.launchTableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
