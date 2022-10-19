@@ -7,15 +7,17 @@
 
 import UIKit
 
-class SXLaunchesViewController: UITableViewController {
+class SXLaunchesViewController: UIViewController {
     
+    @IBOutlet weak var launchesTableView: UITableView!
     @IBOutlet weak var spinnerView: UIView!
     
     var launchProvider = SXLaunchProviderService()
     var launches : [SXLaunchData]? {
         didSet {
-            self.tableView.reloadData()
-//            self.spinnerView.isHidden = true
+            self.loadViewIfNeeded()
+            self.launchesTableView.reloadData()
+            self.spinnerView.isHidden = true
         }
     }
     
@@ -23,44 +25,38 @@ class SXLaunchesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-//        self.spinnerView.isHidden = false
-//        self.getLaunchData()
+        
+        self.title = "SpaceX Launches List"
+        self.launchesTableView.delegate = self
+        self.launchesTableView.dataSource = self
+        self.spinnerView.isHidden = false
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+}
+
+extension SXLaunchesViewController : UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return launches?.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SXLaunchSummaryCell.Identifier, for: indexPath) as? SXLaunchSummaryCell, let launch = self.launches?[indexPath.row] else { return UITableViewCell() }
         
         cell.configure(with: launch)
         return cell
     }
+}
+
+extension SXLaunchesViewController : UITableViewDelegate {
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let launch = self.launches?[indexPath.row] else { return }
         delegate?.selectedLaunchData(launch)
         if let launchDetailsVC = delegate as? SXLaunchDetailsViewController {
             splitViewController?.showDetailViewController(launchDetailsVC, sender: nil)
-        }
-    }
-}
-
-private extension SXLaunchesViewController {
-    
-    
-    func getLaunchData() {
-        self.launchProvider.getLaunchData { [weak self] launches, error in
-            self?.launches = launches
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
         }
     }
 }

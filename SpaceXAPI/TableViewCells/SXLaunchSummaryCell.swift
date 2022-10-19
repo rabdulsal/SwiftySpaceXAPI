@@ -28,7 +28,7 @@ extension SXLaunchDetailsInterface {
     
     func decorateView(with launchData: SXLaunchData, patchImageURL: URL?=nil) {
         self.imageProviderService.resourceURL = patchImageURL ?? launchData.patchImgURLSmall
-        self.missionPatchImageView.image = nil // TODO: Set to Default Image first
+        self.missionPatchImageView.image = UIImage.DefaultRocketLogo
         self.imageProviderService.getMissionPatchImg { image, error in
             if let err = error {
                 // Just return with Default image
@@ -54,7 +54,6 @@ class SXLaunchSummaryCell : UITableViewCell, SXSelfIdentifiable, SXLaunchDetails
     
     @IBOutlet weak var launchSiteDateLabel: UILabel!
     
-    @IBOutlet weak var spinnerView: UIView!
     var imageProviderService = SXImageProviderService()
     
     override func awakeFromNib() {
