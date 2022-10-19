@@ -14,7 +14,6 @@ protocol SXLaunchProvidable {
 class SXLaunchProviderService : SXNetworkingRequestable {
     
     var resourceURL = URL(string:"https://api.spacexdata.com/v3/launches")
-//    var allLaunches = [SXLaunchData]()
     var launchProviderDelegate: SXLaunchProvidable?
     
     func getLaunchData(completion: @escaping (_ launches: [SXLaunchData], _ error: String?)->Void) {

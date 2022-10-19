@@ -54,25 +54,17 @@ class SXLaunchSummaryCell : UITableViewCell, SXSelfIdentifiable, SXLaunchDetails
     
     @IBOutlet weak var launchSiteDateLabel: UILabel!
     
+    @IBOutlet weak var spinnerView: UIView!
     var imageProviderService = SXImageProviderService()
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+//        self.spinnerView.isHidden = false
+    }
+    
     func configure(with launchData: SXLaunchData) {
-//        self.imageProviderService.resourceURL = URL(string: data.missionPatchImgURLSmall)
-//        self.missionPatchImageView.image = nil // TODO: Set to Default Image first
-//        self.imageProviderService.getMissionPatchImg { image, error in
-//            if let err = error {
-//                // Just return with Default image
-//                return
-//            }
-//            DispatchQueue.main.async {
-//                self.missionPatchImageView.image = image
-//            }
-//        }
-//        self.missionNameLabel.text = data.missionName
-//        self.rocketNameLabel.text = data.rocketName
-//        self.launchSiteDateLabel.text = "\(data.launchSite) - \(data.launchDate)"
         self.decorateView(with: launchData)
-        
+//        self.spinnerView.isHidden = true
     }
 }
 

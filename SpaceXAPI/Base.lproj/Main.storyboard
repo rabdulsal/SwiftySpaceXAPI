@@ -41,21 +41,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSZ-GP-2qd" userLabel="Spinner View">
+                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="lXu-sp-irD">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="719"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="lXu-sp-irD" firstAttribute="top" secondItem="QSZ-GP-2qd" secondAttribute="top" id="F4H-Ja-5rW"/>
+                                    <constraint firstAttribute="trailing" secondItem="lXu-sp-irD" secondAttribute="trailing" id="PKU-w3-CCe"/>
+                                    <constraint firstAttribute="bottom" secondItem="lXu-sp-irD" secondAttribute="bottom" id="hg4-h8-GbR"/>
+                                    <constraint firstItem="lXu-sp-irD" firstAttribute="leading" secondItem="QSZ-GP-2qd" secondAttribute="leading" id="kmM-l9-Siq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dzr-Xk-T3p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eUo-PT-dj0" firstAttribute="top" secondItem="Z1V-Gf-hhB" secondAttribute="bottom" constant="8" id="1To-jx-FVD"/>
                             <constraint firstItem="Dzr-Xk-T3p" firstAttribute="trailing" secondItem="Z1V-Gf-hhB" secondAttribute="trailing" constant="16" id="AiE-Ee-3ok"/>
+                            <constraint firstItem="Dzr-Xk-T3p" firstAttribute="bottom" secondItem="QSZ-GP-2qd" secondAttribute="bottom" id="F9d-Wy-hNE"/>
                             <constraint firstItem="eUo-PT-dj0" firstAttribute="leading" secondItem="Z1V-Gf-hhB" secondAttribute="leading" id="FE3-8k-m3u"/>
                             <constraint firstItem="eUo-PT-dj0" firstAttribute="trailing" secondItem="Z1V-Gf-hhB" secondAttribute="trailing" id="OPy-do-qt5"/>
                             <constraint firstItem="0wb-Wu-CL8" firstAttribute="top" secondItem="eUo-PT-dj0" secondAttribute="bottom" constant="8" id="QxT-IW-niS"/>
                             <constraint firstItem="0wb-Wu-CL8" firstAttribute="trailing" secondItem="eUo-PT-dj0" secondAttribute="trailing" id="R5r-vj-wJA"/>
+                            <constraint firstItem="QSZ-GP-2qd" firstAttribute="top" secondItem="Dzr-Xk-T3p" secondAttribute="top" id="V4t-1A-2d1"/>
                             <constraint firstItem="0wb-Wu-CL8" firstAttribute="centerX" secondItem="eUo-PT-dj0" secondAttribute="centerX" id="W8e-XS-xNc"/>
                             <constraint firstItem="Tzx-5S-C3c" firstAttribute="top" secondItem="Dzr-Xk-T3p" secondAttribute="top" constant="20" id="XDR-zA-yuu"/>
                             <constraint firstItem="Tzx-5S-C3c" firstAttribute="centerX" secondItem="Dzr-Xk-T3p" secondAttribute="centerX" id="XS6-mP-n5M"/>
+                            <constraint firstItem="Dzr-Xk-T3p" firstAttribute="trailing" secondItem="QSZ-GP-2qd" secondAttribute="trailing" id="a2Y-xK-ohq"/>
                             <constraint firstItem="0wb-Wu-CL8" firstAttribute="leading" secondItem="eUo-PT-dj0" secondAttribute="leading" id="dJ0-cx-WN1"/>
                             <constraint firstItem="Z1V-Gf-hhB" firstAttribute="top" secondItem="Tzx-5S-C3c" secondAttribute="bottom" constant="10" id="g33-4t-mxw"/>
+                            <constraint firstItem="QSZ-GP-2qd" firstAttribute="leading" secondItem="Dzr-Xk-T3p" secondAttribute="leading" id="gni-9U-TLf"/>
                             <constraint firstItem="Z1V-Gf-hhB" firstAttribute="centerX" secondItem="Tzx-5S-C3c" secondAttribute="centerX" id="hLZ-zb-T9k"/>
                             <constraint firstItem="eUo-PT-dj0" firstAttribute="centerX" secondItem="Z1V-Gf-hhB" secondAttribute="centerX" id="l7P-08-rWx"/>
                             <constraint firstItem="Z1V-Gf-hhB" firstAttribute="leading" secondItem="Dzr-Xk-T3p" secondAttribute="leading" constant="16" id="yBK-ZB-Cfq"/>
@@ -66,6 +85,7 @@
                         <outlet property="missionNameLabel" destination="Z1V-Gf-hhB" id="Zgv-jG-x5C"/>
                         <outlet property="missionPatchImageView" destination="Tzx-5S-C3c" id="nWn-fn-RNL"/>
                         <outlet property="rocketNameLabel" destination="eUo-PT-dj0" id="lKa-e4-zfH"/>
+                        <outlet property="spinnerView" destination="QSZ-GP-2qd" id="YHb-D6-jDK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Xc-is-4Lq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -150,6 +170,10 @@
                     <navigationItem key="navigationItem" title="SpaceX Launches List" id="owZ-HQ-Ybn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sYg-OV-fpO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" id="N8N-y7-TgM">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="719"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </objects>
             <point key="canvasLocation" x="-642" y="994"/>
         </scene>

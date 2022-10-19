@@ -9,10 +9,13 @@ import UIKit
 
 class SXLaunchesViewController: UITableViewController {
     
+    @IBOutlet weak var spinnerView: UIView!
+    
     var launchProvider = SXLaunchProviderService()
     var launches : [SXLaunchData]? {
         didSet {
             self.tableView.reloadData()
+//            self.spinnerView.isHidden = true
         }
     }
     
@@ -23,6 +26,7 @@ class SXLaunchesViewController: UITableViewController {
         // Do any additional setup after loading the view.
         self.tableView.delegate = self
         self.tableView.dataSource = self
+//        self.spinnerView.isHidden = false
 //        self.getLaunchData()
     }
     

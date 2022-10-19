@@ -23,15 +23,22 @@ class SXLaunchDetailsViewController : UIViewController, SXLaunchDetailsInterface
     @IBOutlet weak var rocketNameLabel: UILabel!
     @IBOutlet weak var launchSiteDateLabel: UILabel!
     
+    @IBOutlet weak var spinnerView: UIView!
+    
     var imageProviderService = SXImageProviderService()
     
     var launch: SXLaunchData? {
         didSet {
             self.loadViewIfNeeded()
             decorateView(with: launch!, patchImageURL: launch!.patchImgURL)
+            self.spinnerView.isHidden = true
         }
     }
-//    var delegate: SXLaunchListSelectionDelegate?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.spinnerView.isHidden = false
+    }
     
 }
 
