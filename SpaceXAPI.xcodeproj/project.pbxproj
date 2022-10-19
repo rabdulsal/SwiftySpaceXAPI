@@ -25,6 +25,7 @@
 		3ABC2EA728FF28F200B21082 /* UIFont+SpaceXAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2EA628FF28F200B21082 /* UIFont+SpaceXAPI.swift */; };
 		3ABC2EAA28FF84FC00B21082 /* SXSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2EA928FF84FC00B21082 /* SXSplitViewController.swift */; };
 		3ABC2EAC28FF854A00B21082 /* SXLaunchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2EAB28FF854A00B21082 /* SXLaunchDetailsViewController.swift */; };
+		3ABC2EAF28FFC56900B21082 /* SXStartupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2EAE28FFC56900B21082 /* SXStartupCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		3ABC2EA628FF28F200B21082 /* UIFont+SpaceXAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+SpaceXAPI.swift"; sourceTree = "<group>"; };
 		3ABC2EA928FF84FC00B21082 /* SXSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXSplitViewController.swift; sourceTree = "<group>"; };
 		3ABC2EAB28FF854A00B21082 /* SXLaunchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXLaunchDetailsViewController.swift; sourceTree = "<group>"; };
+		3ABC2EAE28FFC56900B21082 /* SXStartupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXStartupCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		3ABC2E6628FE48D300B21082 /* SpaceXAPI */ = {
 			isa = PBXGroup;
 			children = (
+				3ABC2EAD28FFC55600B21082 /* Coordinators */,
 				3ABC2EA828FF849800B21082 /* ViewControllers */,
 				3ABC2EA528FF28C400B21082 /* Extensions */,
 				3ABC2EA028FF00B700B21082 /* TableViewCells */,
@@ -190,6 +193,14 @@
 				3ABC2EAB28FF854A00B21082 /* SXLaunchDetailsViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3ABC2EAD28FFC55600B21082 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				3ABC2EAE28FFC56900B21082 /* SXStartupCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +341,7 @@
 				3ABC2EA728FF28F200B21082 /* UIFont+SpaceXAPI.swift in Sources */,
 				3ABC2E9A28FE493600B21082 /* SXNetworkingService.swift in Sources */,
 				3ABC2E6C28FE48D300B21082 /* SXLaunchesViewController.swift in Sources */,
+				3ABC2EAF28FFC56900B21082 /* SXStartupCoordinator.swift in Sources */,
 				3ABC2EA228FF012A00B21082 /* SXLaunchSummaryCell.swift in Sources */,
 				3ABC2E6828FE48D300B21082 /* AppDelegate.swift in Sources */,
 				3ABC2E6A28FE48D300B21082 /* SceneDelegate.swift in Sources */,
