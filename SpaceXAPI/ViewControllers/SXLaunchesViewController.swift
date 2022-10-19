@@ -42,6 +42,9 @@ class SXLaunchesViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let launch = self.launches?[indexPath.row] else { return }
         delegate?.selectedLaunchData(launch)
+        if let launchDetailsVC = delegate as? SXLaunchDetailsViewController {
+            splitViewController?.showDetailViewController(launchDetailsVC, sender: nil)
+        }
     }
 }
 
