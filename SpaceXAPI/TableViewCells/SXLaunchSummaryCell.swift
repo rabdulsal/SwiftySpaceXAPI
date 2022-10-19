@@ -16,7 +16,35 @@ extension SXSelfIdentifiable {
     }
 }
 
-class SXLaunchSummaryCell : UITableViewCell, SXSelfIdentifiable {
+protocol SXLaunchDetailsInterface {
+    var missionPatchImageView: UIImageView! { get set }
+    var missionNameLabel: UILabel! { get set }
+    var rocketNameLabel: UILabel! { get set }
+    var launchSiteDateLabel: UILabel! { get set }
+    var imageProviderService: SXImageProviderService { get set }
+}
+
+extension SXLaunchDetailsInterface {
+    
+    func decorateView(with launchData: SXLaunchData, patchImageURL: URL?=nil) {
+        self.imageProviderService.resourceURL = patchImageURL ?? launchData.patchImgURLSmall
+        self.missionPatchImageView.image = nil // TODO: Set to Default Image first
+        self.imageProviderService.getMissionPatchImg { image, error in
+            if let err = error {
+                // Just return with Default image
+                return
+            }
+            DispatchQueue.main.async {
+                self.missionPatchImageView.image = image
+            }
+        }
+        self.missionNameLabel.text = launchData.missionName
+        self.rocketNameLabel.text = launchData.rocketName
+        self.launchSiteDateLabel.text = "\(launchData.launchSite) - \(launchData.launchDate)"
+    }
+}
+
+class SXLaunchSummaryCell : UITableViewCell, SXSelfIdentifiable, SXLaunchDetailsInterface {
     
     @IBOutlet weak var missionPatchImageView: UIImageView!
     
@@ -26,23 +54,24 @@ class SXLaunchSummaryCell : UITableViewCell, SXSelfIdentifiable {
     
     @IBOutlet weak var launchSiteDateLabel: UILabel!
     
-    var imageService = SXImageProviderService()
+    var imageProviderService = SXImageProviderService()
     
-    func configure(with data: SXLaunchData) {
-        self.imageService.resourceURL = URL(string: data.missionPatchImgURLSmall)
-        self.missionPatchImageView.image = nil // TODO: Set to Default Image first
-        self.imageService.getMissionPatchImg { image, error in
-            if let err = error {
-                // Just return with Default image
-                return
-            }
-            DispatchQueue.main.async {
-                self.missionPatchImageView.image = image
-            }
-        }
-        self.missionNameLabel.text = data.missionName
-        self.rocketNameLabel.text = data.rocketName
-        self.launchSiteDateLabel.text = "\(data.launchSite) - \(data.launchDate)"
+    func configure(with launchData: SXLaunchData) {
+//        self.imageProviderService.resourceURL = URL(string: data.missionPatchImgURLSmall)
+//        self.missionPatchImageView.image = nil // TODO: Set to Default Image first
+//        self.imageProviderService.getMissionPatchImg { image, error in
+//            if let err = error {
+//                // Just return with Default image
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                self.missionPatchImageView.image = image
+//            }
+//        }
+//        self.missionNameLabel.text = data.missionName
+//        self.rocketNameLabel.text = data.rocketName
+//        self.launchSiteDateLabel.text = "\(data.launchSite) - \(data.launchDate)"
+        self.decorateView(with: launchData)
         
     }
 }

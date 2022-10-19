@@ -16,7 +16,15 @@ import Foundation
  */
 struct SXLaunchData : Decodable {
     
-    var missionName, rocketName, launchSite, launchDate, missionPatchImgURL, missionPatchImgURLSmall: String
+    var missionName, rocketName, launchSite, launchDate, missionPatchImgStr, missionPatchImgStrSmall: String
+    
+    var patchImgURL: URL? {
+        return URL(string: missionPatchImgStr)
+    }
+    
+    var patchImgURLSmall: URL? {
+        return URL(string: missionPatchImgStrSmall)
+    }
     
     // CodingKeys Enum
     enum RootCodingKeys: String, CodingKey {
@@ -34,8 +42,8 @@ struct SXLaunchData : Decodable {
             case siteName = "site_name"
         }
         enum LinksCodingKeys: String, CodingKey {
-            case missionPatchImgURL = "mission_patch"
-            case missionPatchImgURLSmall = "mission_patch_small"
+            case missionPatchImgStr = "mission_patch"
+            case missionPatchImgStrSmall = "mission_patch_small"
         }
     }
     
@@ -48,7 +56,7 @@ struct SXLaunchData : Decodable {
         self.rocketName = try rocketContainer.decode(String?.self, forKey: .rocketName) ?? ""
         self.launchSite = try launchSiteContainer.decode(String?.self, forKey: .siteName) ?? ""
         self.launchDate = try rootContainer.decode(String?.self, forKey: .launchDate) ?? ""
-        self.missionPatchImgURL = try linksContainer.decode(String?.self, forKey: .missionPatchImgURL) ?? ""
-        self.missionPatchImgURLSmall = try linksContainer.decode(String?.self, forKey: .missionPatchImgURLSmall) ?? ""
+        self.missionPatchImgStr = try linksContainer.decode(String?.self, forKey: .missionPatchImgStr) ?? ""
+        self.missionPatchImgStrSmall = try linksContainer.decode(String?.self, forKey: .missionPatchImgStrSmall) ?? ""
     }
 }

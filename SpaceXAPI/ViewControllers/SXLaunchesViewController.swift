@@ -10,28 +10,38 @@ import UIKit
 class SXLaunchesViewController: UITableViewController {
     
     var launchProvider = SXLaunchProviderService()
-    var launches = [SXLaunchData]()
+    var launches : [SXLaunchData]? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    weak var delegate: SXLaunchListSelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.getLaunchData()
+//        self.getLaunchData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return launches.count
+        return launches?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SXLaunchSummaryCell.Identifier, for: indexPath) as? SXLaunchSummaryCell else { return UITableViewCell() }
-        let launch = self.launches[indexPath.row]
-//        cell.textLabel?.text = launch.missionName
-//        cell.detailTextLabel?.text = launch.rocketName
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SXLaunchSummaryCell.Identifier, for: indexPath) as? SXLaunchSummaryCell, let launch = self.launches?[indexPath.row] else { return UITableViewCell() }
+        
         cell.configure(with: launch)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let launch = self.launches?[indexPath.row] else { return }
+        delegate?.selectedLaunchData(launch)
     }
 }
 

@@ -8,22 +8,92 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Launch Details View Controller-->
         <scene sceneID="iKA-sw-TPv">
             <objects>
-                <viewController id="5Ad-pL-YE0" sceneMemberID="viewController">
+                <viewController id="5Ad-pL-YE0" customClass="SXLaunchDetailsViewController" customModule="SpaceXAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yn2-TN-cE7">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACa-Bj-T8C">
+                                <rect key="frame" x="16" y="91" width="358" height="719"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mis-h6-1PB" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="719"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4Lp-gI-EPX">
+                                                <rect key="frame" x="0.0" y="0.0" width="358" height="443"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-5S-C3c">
+                                                        <rect key="frame" x="0.0" y="0.0" width="358" height="358"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Tzx-5S-C3c" secondAttribute="height" multiplier="1:1" id="6Hn-NK-bKF"/>
+                                                            <constraint firstAttribute="width" constant="200" id="77o-hX-7UB"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1V-Gf-hhB">
+                                                        <rect key="frame" x="0.0" y="366" width="358" height="20.333333333333314"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUo-PT-dj0">
+                                                        <rect key="frame" x="0.0" y="394.33333333333331" width="358" height="20.333333333333314"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wb-Wu-CL8">
+                                                        <rect key="frame" x="0.0" y="422.66666666666663" width="358" height="20.333333333333314"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="4Lp-gI-EPX" firstAttribute="leading" secondItem="Mis-h6-1PB" secondAttribute="leading" id="JVY-9F-N2E"/>
+                                            <constraint firstItem="4Lp-gI-EPX" firstAttribute="top" secondItem="Mis-h6-1PB" secondAttribute="top" id="ONr-Ys-Osx"/>
+                                            <constraint firstAttribute="trailing" secondItem="4Lp-gI-EPX" secondAttribute="trailing" id="q26-WZ-0mb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Mis-h6-1PB" firstAttribute="top" secondItem="ACa-Bj-T8C" secondAttribute="top" id="0VH-BR-bwD"/>
+                                    <constraint firstItem="Mis-h6-1PB" firstAttribute="centerX" secondItem="ACa-Bj-T8C" secondAttribute="centerX" id="55n-Pk-kgL"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mis-h6-1PB" secondAttribute="bottom" id="H94-Vg-fLI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mis-h6-1PB" secondAttribute="trailing" id="MvG-YT-fIH"/>
+                                    <constraint firstItem="Mis-h6-1PB" firstAttribute="leading" secondItem="ACa-Bj-T8C" secondAttribute="leading" id="UN1-Yo-BuW"/>
+                                    <constraint firstItem="Mis-h6-1PB" firstAttribute="bottom" secondItem="CVy-2T-ZrQ" secondAttribute="bottom" id="hVH-0f-gff"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Pse-m8-kqB"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="CVy-2T-ZrQ"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Dzr-Xk-T3p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Dzr-Xk-T3p" firstAttribute="trailing" secondItem="ACa-Bj-T8C" secondAttribute="trailing" constant="16" id="Rbb-08-owW"/>
+                            <constraint firstItem="Dzr-Xk-T3p" firstAttribute="bottom" secondItem="ACa-Bj-T8C" secondAttribute="bottom" id="VJD-sG-e0G"/>
+                            <constraint firstItem="ACa-Bj-T8C" firstAttribute="top" secondItem="Dzr-Xk-T3p" secondAttribute="top" id="YVD-3M-1tW"/>
+                            <constraint firstItem="ACa-Bj-T8C" firstAttribute="leading" secondItem="Dzr-Xk-T3p" secondAttribute="leading" constant="16" id="bKT-v7-vmg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="launchSiteDateLabel" destination="0wb-Wu-CL8" id="dh0-rX-v5r"/>
+                        <outlet property="missionNameLabel" destination="Z1V-Gf-hhB" id="Zgv-jG-x5C"/>
+                        <outlet property="missionPatchImageView" destination="Tzx-5S-C3c" id="nWn-fn-RNL"/>
+                        <outlet property="rocketNameLabel" destination="eUo-PT-dj0" id="lKa-e4-zfH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Xc-is-4Lq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1506" y="289"/>
+            <point key="canvasLocation" x="-1506.1538461538462" y="288.62559241706163"/>
         </scene>
-        <!--Root View Controller-->
+        <!--SpaceX Launches List-->
         <scene sceneID="ptV-ru-6Cd">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="36M-hk-EYy" customClass="SXLaunchesViewController" customModule="SpaceXAPI" customModuleProvider="target" sceneMemberID="viewController">
@@ -98,7 +168,7 @@
                             <outlet property="delegate" destination="36M-hk-EYy" id="K6q-ZD-3hd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="owZ-HQ-Ybn"/>
+                    <navigationItem key="navigationItem" title="SpaceX Launches List" id="owZ-HQ-Ybn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sYg-OV-fpO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,6 +177,7 @@
         <!--Navigation Controller-->
         <scene sceneID="EkM-Eh-04g">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EJ6-TO-cBR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="AJ5-xe-VUK" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mdC-z2-CjT">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -116,14 +187,13 @@
                         <segue destination="36M-hk-EYy" kind="relationship" relationship="rootViewController" id="RBE-yF-joH"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EJ6-TO-cBR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1506" y="994"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="TWT-HT-Yt5">
             <objects>
-                <splitViewController allowDoubleColumnStyle="YES" primaryBackgroundStyle="sidebar" id="7fR-Hj-NqV" sceneMemberID="viewController">
+                <splitViewController allowDoubleColumnStyle="YES" primaryBackgroundStyle="sidebar" id="7fR-Hj-NqV" customClass="SXSplitViewController" customModule="SpaceXAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="AJ5-xe-VUK" kind="relationship" relationship="masterViewController" id="OlT-cA-Yzc"/>
                         <segue destination="5Ad-pL-YE0" kind="relationship" relationship="detailViewController" id="lJa-eG-uZS"/>
