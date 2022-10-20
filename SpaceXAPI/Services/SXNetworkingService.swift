@@ -40,7 +40,7 @@ class SXLaunchRequestService : SXNetworkingRequestable {
     func getLaunchData(completion: @escaping (_ rocketJSON: [[String:Any]]?, _ error: String?)->Void) {
         self.makeRequest{ data, error in
             if let err = error {
-                print("ERROR: \(err)")
+                completion(nil,"ERROR: \(err)")
                 return
             }
             
@@ -51,10 +51,10 @@ class SXLaunchRequestService : SXNetworkingRequestable {
                 {
                      completion(json,nil)
                 } else {
-                    print("ERROR: Couldn't unwrap Data or Response")
+                    completion(nil,"ERROR: Couldn't unwrap Data or Response")
                 }
             } catch {
-                print("ERROR: \(error)")
+                completion(nil,"ERROR: \(error)")
             }
         }
     }

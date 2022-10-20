@@ -19,7 +19,7 @@ class SXLaunchProviderService : SXNetworkingRequestable {
     func getLaunchData(completion: @escaping (_ launches: [SXLaunchData], _ error: String?)->Void) {
         self.makeRequest { launchData, error in
             if let err = error {
-                print("ERROR: \(err)")
+                completion([],err)
                 return
             }
             var launches = [SXLaunchData]()
@@ -28,7 +28,6 @@ class SXLaunchProviderService : SXNetworkingRequestable {
                 launches = try JSONDecoder().decode([SXLaunchData].self, from: launchData)
                 completion(launches,nil)
             } catch {
-                print("ERROR: \(error.localizedDescription)")
                 completion(launches,error.localizedDescription)
             }
         }

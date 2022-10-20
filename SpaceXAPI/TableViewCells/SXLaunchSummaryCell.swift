@@ -30,8 +30,8 @@ extension SXLaunchDetailsInterface {
         self.imageProviderService.resourceURL = patchImageURL ?? launchData.patchImgURLSmall
         self.missionPatchImageView.image = UIImage.DefaultRocketLogo
         self.imageProviderService.getMissionPatchImg { image, error in
-            if let err = error {
-                // Just return with Default image
+            if let _ = error {
+                // Do nothing as image is already pre-set to DefaultImage
                 return
             }
             DispatchQueue.main.async {
@@ -58,12 +58,10 @@ class SXLaunchSummaryCell : UITableViewCell, SXSelfIdentifiable, SXLaunchDetails
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.spinnerView.isHidden = false
     }
     
     func configure(with launchData: SXLaunchData) {
         self.decorateView(with: launchData)
-//        self.spinnerView.isHidden = true
     }
 }
 
