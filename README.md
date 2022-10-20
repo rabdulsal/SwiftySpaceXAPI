@@ -4,7 +4,7 @@
 
 **Summary details displayed in the list should include:** 
 
-    *Mission Name*
+    Mission Name
     Rocket Name
     Launch Site Name
     Date of Launch
