@@ -27,6 +27,7 @@
 		3ABC2EAC28FF854A00B21082 /* SXLaunchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2EAB28FF854A00B21082 /* SXLaunchDetailsViewController.swift */; };
 		3ABC2EAF28FFC56900B21082 /* SXStartupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2EAE28FFC56900B21082 /* SXStartupCoordinator.swift */; };
 		3AC957AB290057C8005AAF5C /* UIImage+SpaceXAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC957AA290057C8005AAF5C /* UIImage+SpaceXAPI.swift */; };
+		3AC957EE2900F8D9005AAF5C /* SXDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC957ED2900F8D9005AAF5C /* SXDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		3ABC2EAB28FF854A00B21082 /* SXLaunchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXLaunchDetailsViewController.swift; sourceTree = "<group>"; };
 		3ABC2EAE28FFC56900B21082 /* SXStartupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXStartupCoordinator.swift; sourceTree = "<group>"; };
 		3AC957AA290057C8005AAF5C /* UIImage+SpaceXAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SpaceXAPI.swift"; sourceTree = "<group>"; };
+		3AC957ED2900F8D9005AAF5C /* SXDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXDateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		3ABC2E6628FE48D300B21082 /* SpaceXAPI */ = {
 			isa = PBXGroup;
 			children = (
+				3AC957EC2900F8C7005AAF5C /* Helpers */,
 				3ABC2EAD28FFC55600B21082 /* Coordinators */,
 				3ABC2EA828FF849800B21082 /* ViewControllers */,
 				3ABC2EA528FF28C400B21082 /* Extensions */,
@@ -204,6 +207,14 @@
 				3ABC2EAE28FFC56900B21082 /* SXStartupCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		3AC957EC2900F8C7005AAF5C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3AC957ED2900F8D9005AAF5C /* SXDateFormatter.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +361,7 @@
 				3ABC2E6828FE48D300B21082 /* AppDelegate.swift in Sources */,
 				3ABC2E6A28FE48D300B21082 /* SceneDelegate.swift in Sources */,
 				3ABC2EAC28FF854A00B21082 /* SXLaunchDetailsViewController.swift in Sources */,
+				3AC957EE2900F8D9005AAF5C /* SXDateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

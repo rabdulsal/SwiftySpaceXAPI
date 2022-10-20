@@ -26,11 +26,15 @@ struct SXLaunchData : Decodable {
         return URL(string: missionPatchImgStrSmall)
     }
     
+    var launchDateDisplay : String {
+        return SXDateFormatter.MakeHumanReadableDateString(self.launchDate)
+    }
+    
     // CodingKeys Enum
     enum RootCodingKeys: String, CodingKey {
         case missionName = "mission_name"
         case rocket = "rocket"
-        case launchDate = "launch_date_utc"
+        case launchDate = "launch_date_local"
         case launchSite = "launch_site"
         case links = "links"
         

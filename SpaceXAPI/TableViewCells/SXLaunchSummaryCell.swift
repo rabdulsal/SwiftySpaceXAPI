@@ -40,7 +40,7 @@ extension SXLaunchDetailsInterface {
         }
         self.missionNameLabel.text = launchData.missionName
         self.rocketNameLabel.text = launchData.rocketName
-        self.launchSiteDateLabel.text = "\(launchData.launchSite) - \(launchData.launchDate)"
+        self.launchSiteDateLabel.text = "\(launchData.launchSite) - \(launchData.launchDateDisplay)"
     }
 }
 
