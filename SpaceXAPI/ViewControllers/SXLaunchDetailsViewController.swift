@@ -22,7 +22,7 @@ class SXLaunchDetailsViewController : UIViewController, SXLaunchDetailsInterface
     @IBOutlet weak var missionNameLabel: UILabel!
     @IBOutlet weak var rocketNameLabel: UILabel!
     @IBOutlet weak var launchSiteDateLabel: UILabel!
-    
+    @IBOutlet weak var launchDetailsLabel: UILabel!
     @IBOutlet weak var spinnerView: UIView!
     
     var imageProviderService = SXImageProviderService()
@@ -30,7 +30,7 @@ class SXLaunchDetailsViewController : UIViewController, SXLaunchDetailsInterface
     var launch: SXLaunchData? {
         didSet {
             self.loadViewIfNeeded()
-            decorateView(with: launch!, patchImageURL: launch!.patchImgURL)
+            self.populateLaunchDetails(with: launch!, patchImageURL: launch!.patchImgURL)
             self.spinnerView.isHidden = true
         }
     }
@@ -45,7 +45,15 @@ class SXLaunchDetailsViewController : UIViewController, SXLaunchDetailsInterface
 extension SXLaunchDetailsViewController : SXLaunchListSelectionDelegate {
     
     func selectedLaunchData(_ launchData: SXLaunchData) {
-        self.decorateView(with: launchData)
+        self.populateLaunchDetails(with: launchData)
+    }
+}
+
+private extension SXLaunchDetailsViewController {
+    
+    func populateLaunchDetails(with launchData: SXLaunchData, patchImageURL: URL?=nil) {
+        self.launchDetailsLabel.text = launchData.launchDetails
+        self.decorateView(with: launchData, patchImageURL: patchImageURL)
     }
 }
 

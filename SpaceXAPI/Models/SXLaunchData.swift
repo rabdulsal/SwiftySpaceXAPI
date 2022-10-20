@@ -16,7 +16,7 @@ import Foundation
  */
 struct SXLaunchData : Decodable {
     
-    var missionName, rocketName, launchSite, launchDate, missionPatchImgStr, missionPatchImgStrSmall: String
+    var missionName, rocketName, launchSite, launchDate, launchDetails, missionPatchImgStr, missionPatchImgStrSmall: String
     
     var patchImgURL: URL? {
         return URL(string: missionPatchImgStr)
@@ -37,6 +37,7 @@ struct SXLaunchData : Decodable {
         case launchDate = "launch_date_local"
         case launchSite = "launch_site"
         case links = "links"
+        case details = "details"
         
         enum RocketCodingKeys: String, CodingKey {
             case rocketName = "rocket_name"
@@ -57,6 +58,7 @@ struct SXLaunchData : Decodable {
         let launchSiteContainer = try rootContainer.nestedContainer(keyedBy: RootCodingKeys.LaunchSiteCodingKeys.self, forKey: .launchSite)
         let linksContainer = try rootContainer.nestedContainer(keyedBy: RootCodingKeys.LinksCodingKeys.self, forKey: .links)
         self.missionName = try rootContainer.decode(String?.self, forKey: .missionName) ?? ""
+        self.launchDetails = try rootContainer.decode(String?.self, forKey: .details) ?? ""
         self.rocketName = try rocketContainer.decode(String?.self, forKey: .rocketName) ?? ""
         self.launchSite = try launchSiteContainer.decode(String?.self, forKey: .siteName) ?? ""
         self.launchDate = try rootContainer.decode(String?.self, forKey: .launchDate) ?? ""

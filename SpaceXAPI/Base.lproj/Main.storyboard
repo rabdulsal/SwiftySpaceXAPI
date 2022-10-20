@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1V-Gf-hhB">
-                                        <rect key="frame" x="0.0" y="358" width="350" height="251"/>
+                                        <rect key="frame" x="0.0" y="358" width="350" height="222.66666666666663"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Label">
                                                 <attributes>
@@ -36,15 +36,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUo-PT-dj0">
-                                        <rect key="frame" x="0.0" y="617" width="350" height="30"/>
+                                        <rect key="frame" x="0.0" y="588.66666666666663" width="350" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wb-Wu-CL8">
-                                        <rect key="frame" x="0.0" y="655" width="350" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wb-Wu-CL8">
+                                        <rect key="frame" x="0.0" y="626.66666666666663" width="350" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65s-ag-gtx" userLabel="Launch Details">
+                                        <rect key="frame" x="0.0" y="658.66666666666663" width="350" height="20.333333333333371"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -80,6 +86,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="launchDetailsLabel" destination="65s-ag-gtx" id="py0-rw-HE4"/>
                         <outlet property="launchSiteDateLabel" destination="0wb-Wu-CL8" id="dh0-rX-v5r"/>
                         <outlet property="missionNameLabel" destination="Z1V-Gf-hhB" id="Zgv-jG-x5C"/>
                         <outlet property="missionPatchImageView" destination="Tzx-5S-C3c" id="nWn-fn-RNL"/>
