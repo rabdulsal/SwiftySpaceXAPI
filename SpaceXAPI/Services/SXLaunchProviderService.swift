@@ -34,4 +34,16 @@ class SXLaunchProviderService : SXNetworkingRequestable {
         }
     }
     
+    func getSortedLaunchData(completion: @escaping (_ launches: [SXLaunchData], _ error: String?)->Void) {
+        self.getLaunchData { launches, error in
+            if let e = error {
+                completion(launches,e)
+                return
+            }
+            let sortedLaunches = launches.sorted { l1, l2 in
+                l1.launchDate > l2.launchDate
+            }
+            completion(sortedLaunches,nil)
+        }
+    }
 }

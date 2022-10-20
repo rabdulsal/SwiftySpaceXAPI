@@ -37,7 +37,7 @@ private extension SXStartupCoordinator {
             let detailsVC = (splitVC.viewControllers[SplitChildVCs.Details.rawValue] as? UINavigationController)?.topViewController as? SXLaunchDetailsViewController
           else { fatalError() }
         masterVC.delegate = detailsVC
-        self.launchProvider.getLaunchData { launches, error in
+        self.launchProvider.getSortedLaunchData { launches, error in
             DispatchQueue.main.async {
                 let firstLaunch = launches.first
                 masterVC.launches = launches
