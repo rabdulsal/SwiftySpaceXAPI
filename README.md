@@ -4,15 +4,15 @@
 
 **Summary details displayed in the list should include:** 
 
-    Mission Name
+    *Mission Name*
     Rocket Name
     Launch Site Name
     Date of Launch
     Launch patch image, or default image when not provided by the API
 
-**Each summary item should be clickable. When clicked the full mission details provided by the API should be displayed.
+**Each summary item should be clickable. When clicked the full mission details provided by the API should be displayed.**
 
-**Rotation (orientation change) should be supported on all form factors.
+**Rotation (orientation change) should be supported on all form factors.**
 
     - Portrait 
         - Launches shall be listed and ordered from newest to oldest.
