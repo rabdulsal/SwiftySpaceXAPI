@@ -25,7 +25,8 @@ final class SXStartupCoordinator {
     }
     
     func start() {
-        self.getLaunchData()
+//        self.getLaunchData()
+        self.getAsyncLaunchData()
     }
 }
 
@@ -42,6 +43,30 @@ private extension SXStartupCoordinator {
                 let firstLaunch = launches.first
                 masterVC.launches = launches
                 detailsVC.launch = firstLaunch
+            }
+        }
+        
+    }
+    
+    func getAsyncLaunchData() {
+
+            guard
+                let splitVC =  window?.rootViewController as? SXSplitViewController,
+                let masterVC =  (splitVC.viewControllers[SplitChildVCs.Master.rawValue] as? UINavigationController)?.topViewController as? SXLaunchesViewController,
+                let detailsVC =  (splitVC.viewControllers[SplitChildVCs.Details.rawValue] as? UINavigationController)?.topViewController as? SXLaunchDetailsViewController
+            else { fatalError() }
+                        masterVC.delegate = detailsVC
+//                 masterVC.setLaunchListDelegate(detailsVC)
+        Task {
+            do {
+                let launches = try await self.launchProvider.getAsyncSortedLaunchData()
+                DispatchQueue.main.async {
+                    let firstLaunch = launches.first
+                    masterVC.launches = launches
+                    detailsVC.launch = firstLaunch
+                }
+            } catch {
+                print("Error: \(error.localizedDescription)")
             }
         }
     }

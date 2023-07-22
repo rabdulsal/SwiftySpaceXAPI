@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum SXNetworkingError : String, Error {
+    case badURL
+    case requestFail
+    case badData
+}
+
 protocol SXNetworkingRequestable {
     var resourceURL: URL? { get set }
 }
@@ -30,6 +36,20 @@ extension SXNetworkingRequestable {
                     completion(nil,"ERROR: Couldn't unwrap Data or Response")
                 }
         }).resume()
+    }
+    
+    func makeAsyncRequest() async throws -> Result<Data,Error> {
+        guard let url = resourceURL else {
+            throw SXNetworkingError.badURL
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+               throw SXNetworkingError.requestFail
+            }
+            
+        return .success(data)
     }
 }
 
@@ -57,5 +77,10 @@ class SXLaunchRequestService : SXNetworkingRequestable {
                 completion(nil,"ERROR: \(error)")
             }
         }
+    }
+    
+    func getLaunchData() async throws -> Result<Data,Error> {
+        
+        return try await self.makeAsyncRequest()
     }
 }

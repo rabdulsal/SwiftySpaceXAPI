@@ -14,7 +14,7 @@ import Foundation
      - Date of Launch -- "launch_date_unix/utc/local"
      - Launch patch image, or default image when not provided by the API -- "links" : { "mission_patch" }
  */
-struct SXLaunchData : Decodable {
+struct SXLaunchData : Codable {
     
     var missionName, rocketName, launchSite, launchDate, launchDetails, missionPatchImgStr, missionPatchImgStrSmall: String
     

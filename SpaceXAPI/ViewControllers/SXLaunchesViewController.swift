@@ -32,6 +32,10 @@ class SXLaunchesViewController: UIViewController {
         self.spinnerView.isHidden = false
     }
     
+    func setLaunchListDelegate(_ delegate: SXLaunchListSelectionDelegate) async {
+        self.delegate = delegate
+    }
+    
 }
 
 extension SXLaunchesViewController : UITableViewDataSource {
