@@ -21,5 +21,10 @@
         - Large devices 
             - Shall display the Launch list and detail views in Master/Detail manner. 
             - When a Launch is selected the item shall remain highlighted in the list and the details view shall be populated with the selected Launch details.
-        - Small devices
+        - Small devices![Simulator Screen Recording - iPad Pro 13-inch (M4) - 2024-09-20 at 19 03 59](https://github.com/user-attachments/assets/19168883-596d-47ec-a2bf-d0013b7e5372)
+
             - Shall display like portrait mode
+
+**Demo**
+
+![Simulator Screen Recording - iPad Pro 13-inch (M4) - 2024-09-20 at 19 03 59](https://github.com/user-attachments/assets/a0fa5e68-61dc-44f0-b7e3-f1234c0cef10)
